@@ -1,0 +1,4 @@
+[submodule "kernel"]
+	path = kernel
+	url = https://github.com/muralivijay/kernel_xiaomi_sm6225.git
+	branch = android-14
