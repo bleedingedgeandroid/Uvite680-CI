@@ -1,7 +1,0 @@
-[submodule "kernel"]
-	path = kernel
-	url = https://github.com/muralivijay/kernel_xiaomi_sm6225.git
-	branch = android-14
-[submodule "AnyKernel3-spes"]
-	path = AnyKernel3-spes
-	url = https://github.com/bleedingedgeandroid/AnyKernel3-spes
