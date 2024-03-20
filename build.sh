@@ -23,27 +23,27 @@ then
   then
   echo "Reverting LMK"
   git revert 379824bb737dd658bc69cd8edb773eb3405c77a7..1ab230774f638f0fa732bed4a005493638e15cb8
-  BUILD_SUFFIX="${BUILD_SUFFIX}-MIUI"
   fi
+  BUILD_SUFFIX="${BUILD_SUFFIX}-MIUI"
 else
   if [ $LMK_TEST ];
   then
   echo "BUILD CRITICAL FAIL! LMK REVERT ON AOSP!"
   exit -1
-  BUILD_SUFFIX="${BUILD_SUFFIX}-AOSP"
   fi
+  BUILD_SUFFIX="${BUILD_SUFFIX}-AOSP"
 fi
 
 if [ $2 == "KSU" ]; then
   echo "Enabling KSU"
   if ! [ -d KernelSU ];
   then
-  BUILD_SUFFIX="${BUILD_SUFFIX}-KSU"
   echo 'CONFIG_KPROBES=y
 CONFIG_HAVE_KPROBES=y
 CONFIG_KPROBE_EVENTS=y' >> arch/arm64/configs/vendor/spes-perf_defconfig
   curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
   fi
+  BUILD_SUFFIX="${BUILD_SUFFIX}-KSU"
 else
   if [ -d KernelSU ];
   then
@@ -73,15 +73,6 @@ echo "making kernel"
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC=$(pwd)/aosp_clang/bin/clang \
-                      LD=$(pwd)/aosp_clang/bin/ld.lld \
-                      AS=$(pwd)/aosp_clang/bin/llvm-as \
-                      AR=$(pwd)/aosp_clang/bin/llvm-ar \
-                      NM=$(pwd)/aosp_clang/bin/llvm-nm \
-                      OBJCOPY=$(pwd)/aosp_clang/bin/llvm-objcopy \
-                      OBJDUMP=$(pwd)/aosp_clang/bin/llvm-objdump \
-                      STRIP=$(pwd)/aosp_clang/bin/llvm-strip \
-                      LLVM=1 \
-                      LLVM_IAS=1 \
                       CLANG_TRIPLE=aarch64-linux-gnu- \
                       CROSS_COMPILE=aarch64-linux-gnu- \
                       CROSS_COMPILE_ARM32=arm-linux-gnueabi-
