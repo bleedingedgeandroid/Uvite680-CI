@@ -63,7 +63,7 @@ else
   git pull
   cd ..
 fi
-TOOLCHAIN_PATHS="aosp_clang/bin/"
+TOOLCHAIN_PATHS="$(pwd)/aosp_clang/bin/"
 
 export PATH=${TOOLCHAIN_PATHS}:${PATH}
 
