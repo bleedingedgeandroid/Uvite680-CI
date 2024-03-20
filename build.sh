@@ -72,7 +72,7 @@ make O=out ARCH=arm64 vendor/spes-perf_defconfig
 echo "making kernel"
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
-                      CC=$(pwd)aosp_clang/bin/clang
+                      CC=$(pwd)/aosp_clang/bin/clang
 
 cd ..
 cp kernel/out/arch/arm64/boot/Image.gz AnyKernel3-spes/
