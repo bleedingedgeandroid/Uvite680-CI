@@ -32,13 +32,31 @@ then
   git revert 379824bb737dd658bc69cd8edb773eb3405c77a7..1ab230774f638f0fa732bed4a005493638e15cb8
   echo "SLMK reverted."
   fi
+  echo "Reverting to longcheer dt2w for MIUI Builds"
+  if ! [ -s drivers/input/touchscreen/lct_tp_info.c ];
+  then
+  echo "Longcheer drm was not to reverted previously. Reverting now."
+  git revert cbaf74d6119603693e34baef9f91f90032093ac9
+  git revert 6abd3a01b288b5b145e4b475a6ac7fc3853aa3ff
+  git revert b99596cf242fed93591ca5d1f805f5d6e5d7e242
+  echo "Reverted back to longcheer drm"
+  fi
+
   BUILD_SUFFIX="${BUILD_SUFFIX}-MIUI"
 else
+
   if [ $LMK_TEST ];
   then
   echo "Something went wrong! SLMK has been reverted on an AOSP build."
   exit -1
   fi
+
+  if [ -s drivers/input/touchscreen/lct_tp_info.c ];
+  then
+  echo "Something went wrong! Longcheer dt2w being used on AOSP."
+  exit -1
+  fi
+
   BUILD_SUFFIX="${BUILD_SUFFIX}-AOSP"
 fi
 
