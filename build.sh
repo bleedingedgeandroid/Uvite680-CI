@@ -52,6 +52,12 @@ CONFIG_HAVE_KPROBES=y
 CONFIG_KPROBE_EVENTS=y' >> arch/arm64/configs/$DEFCONFIG
   curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
   echo "KSU enabled."
+  else
+  echo "KSU was previously enabled. Pulling remote changes"
+  cd KernelSU
+  git pull
+  cd ..
+  echo "KSU has been updated."
   fi
   BUILD_SUFFIX="${BUILD_SUFFIX}-KSU"
 else
