@@ -149,7 +149,7 @@ cd AnyKernel3/
 sed -i 's/INTERNAL_KVERSION/'"${KVERSION}"'/' anykernel.sh
 sed -i 's/CIBUILD/'"${BUILD_NUMBER}${BUILD_SUFFIX}/" anykernel.sh
 
-zip -r9 ../Murali680-${BUILD_NUMBER}-${KVERSION}${BUILD_SUFFIX}-PugzAreCuteCI.zip * -x .git README.md *placeholder 
+zip -r9 ../Uvite680-${BUILD_NUMBER}-${KVERSION}${BUILD_SUFFIX}-PugzAreCuteCI.zip * -x .git README.md *placeholder 
 echo "Done"
 
 cd ..
