@@ -6,7 +6,7 @@ pipeline {
                 agent {
                     node {
                         label 'kernel-builder'
-                        customWorkspace "workspace/Android/spes(n)/Uvite680-${TARGET}-${SU}" 
+                        customWorkspace "workspace/Android/spes/Uvite680-${TARGET}-${SU}" 
                     }
                 }
                 axes {
