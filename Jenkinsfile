@@ -6,13 +6,13 @@ pipeline {
                 agent {
                     node {
                         label 'kernel-builder'
-                        customWorkspace "workspace/Android/spes(n)/Murali680-${TARGET}-${SU}" 
+                        customWorkspace "workspace/Android/spes(n)/Uvite680-${TARGET}-${SU}" 
                     }
                 }
                 axes {
                     axis {
                         name 'TARGET'
-                        values 'AOSP', 'MIUI'
+                        values 'AOSP'
                     }
                     axis {
                         name 'SU'

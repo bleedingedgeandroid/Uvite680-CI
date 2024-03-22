@@ -6,7 +6,7 @@ echo "Weclome to kernel builder! Currently building ${DEFCONFIG} $1 $2"
 if ! [ -d kernel ];
 then
   echo "Kernel has not been cloned. Cloning into kernel."
-  git clone https://github.com/muralivijay/kernel_xiaomi_sm6225.git kernel
+  git clone https://github.com/AOSPA/android_kernel_xiaomi_sm6225.git kernel
   echo "Kernel cloned successfully."
 else
   echo "Kernel was cloned before. Pulling remote changes"
@@ -25,6 +25,7 @@ LMK_TEST=$(cat arch/arm64/configs/$DEFCONFIG | grep CONFIG_ANDROID_SIMPLE_LMK -q
 
 if [ $1 == "MIUI" ]; 
 then
+  # Disabled for Uvite680-CI by PugzAreCute(22/03/24)
   echo "Reverting SLMK for MIUI Builds"
   if [ $LMK_TEST ];
   then
@@ -132,7 +133,7 @@ echo "Creating flashable zip."
 if ! [ -d AnyKernel3 ];
 then
   echo "AnyKernel was not cloned, cloning."
-  git clone https://github.com/bleedingedgeandroid/Anykernel3-spes.git AnyKernel3
+  git clone https://github.com/bleedingedgeandroid/Anykernel3-spes.git AnyKernel3 -b uvite680
   echo "AnyKernel cloned into AnyKernel3."
 else
   echo "AnyKernel was cloned brfore. Pulling remote changes."
